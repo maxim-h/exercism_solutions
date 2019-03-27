@@ -12,7 +12,7 @@ impl Clock {
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        Clock {hours:(self.hours + (self.minutes + minutes)/60) % 24, minutes: (self.minutes + minutes) % 60}
+        Clock {hours:(self.hours + (60 + self.minutes + minutes)/60 - 1) % 24, minutes: (60 + (self.minutes + minutes) % 60) % 60}
     }
 }
 
