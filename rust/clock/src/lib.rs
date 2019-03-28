@@ -8,11 +8,11 @@ pub struct Clock {
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        Clock {hours: (hours + minutes/60) % 24,minutes: minutes % 60}
+        Clock {hours: (24 + (hours + (minutes as f32/ 60_f32).floor() as i32) % 24) % 24,minutes: (60 + minutes % 60) % 60}
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
-        Clock {hours:(self.hours + (60 + self.minutes + minutes)/60 - 1) % 24, minutes: (60 + (self.minutes + minutes) % 60) % 60}
+        Clock {hours:(24 + (24 + self.hours + (((self.minutes + minutes) as f32 / 60_f32).floor() as i32) % 24)) % 24, minutes: (60 + self.minutes + minutes % 60) % 60}
     }
 }
 
