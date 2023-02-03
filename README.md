@@ -1,2 +1,2 @@
-# rust_exercism
+# Exercism solutions
 my exercism stuff
